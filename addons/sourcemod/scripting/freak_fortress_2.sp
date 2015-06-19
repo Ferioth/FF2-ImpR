@@ -3342,7 +3342,7 @@ public Action:TF2Items_OnGiveNamedItem(client, String:classname[], iItemDefiniti
 
 	switch(iItemDefinitionIndex)
 	{
-		case 38, 457:  //Axtinguisher, Postal Pummeler
+/*		case 38, 457:  //Axtinguisher, Postal Pummeler
 		{
 			new Handle:itemOverride=PrepareItemHandle(item, _, _, "", true);
 			if(itemOverride!=INVALID_HANDLE)
@@ -3404,8 +3404,8 @@ public Action:TF2Items_OnGiveNamedItem(client, String:classname[], iItemDefiniti
 				item=itemOverride;
 				return Plugin_Changed;
 			}
-		}
-/*		case 132, 266, 482:
+		}*/
+/*		case 132, 266, 482: //Eyelander, Horseless Headless Horsemann's Heataker, Nessie's Nine Iron
 		{
 			new Handle:itemOverride=PrepareItemHandle(item, _, _, "202 ; 0.5 ; 125 ; -15", true);
 			if(itemOverride!=INVALID_HANDLE)
@@ -3414,7 +3414,7 @@ public Action:TF2Items_OnGiveNamedItem(client, String:classname[], iItemDefiniti
 				return Plugin_Changed;
 			}
 		}*/
-		case 211, 663, 796, 805, 885, 894, 903, 912, 961, 970:  //Renamed/Strange, Festive, Silver Botkiller, Gold Botkiller, Rusty Botkiller, Bloody Botkiller, Carbonado Botkiller, Diamond Botkiller Mk.II, Silver Botkiller Mk.II, and Gold Botkiller Mk.II Mediguns
+		/*case 211, 663, 796, 805, 885, 894, 903, 912, 961, 970:  //Renamed/Strange, Festive, Silver Botkiller, Gold Botkiller, Rusty Botkiller, Bloody Botkiller, Carbonado Botkiller, Diamond Botkiller Mk.II, Silver Botkiller Mk.II, and Gold Botkiller Mk.II Mediguns
 		{
 			new Handle:itemOverride=PrepareItemHandle(item, _, _, "10 ; 1.25 ; 178 ; 0.75 ; 144 ; 2.0 ; 11 ; 1.5");
 				//10: +25% faster charge rate
@@ -3487,7 +3487,7 @@ public Action:TF2Items_OnGiveNamedItem(client, String:classname[], iItemDefiniti
 			}
 		}
 		case 444:  //Mantreads
-		{
+		{*/
 			/*new Handle:itemOverride=PrepareItemHandle(item, _, _, "58 ; 1.5");
 			if(itemOverride!=INVALID_HANDLE)
 			{
@@ -3495,7 +3495,7 @@ public Action:TF2Items_OnGiveNamedItem(client, String:classname[], iItemDefiniti
 				return Plugin_Changed;
 			}*/
 
-			#if defined _tf2attributes_included
+			/*#if defined _tf2attributes_included
 			if(tf2attributes)
 			{
 				TF2Attrib_SetByDefIndex(client, 58, 1.5);
@@ -3549,10 +3549,10 @@ public Action:TF2Items_OnGiveNamedItem(client, String:classname[], iItemDefiniti
 				item=itemOverride;
 				return Plugin_Changed;
 			}
-		}
+		}*/
 	}
 
-	if(TF2_GetPlayerClass(client)==TFClass_Soldier && (!strncmp(classname, "tf_weapon_rocketlauncher", 24, false) || !strncmp(classname, "tf_weapon_shotgun", 17, false)))
+	/*if(TF2_GetPlayerClass(client)==TFClass_Soldier && (!strncmp(classname, "tf_weapon_rocketlauncher", 24, false) || !strncmp(classname, "tf_weapon_shotgun", 17, false)))
 	{
 		new Handle:itemOverride;
 		if(iItemDefinitionIndex==127)  //Direct Hit
@@ -3571,7 +3571,7 @@ public Action:TF2Items_OnGiveNamedItem(client, String:classname[], iItemDefiniti
 		}
 	}
 	return Plugin_Continue;
-}
+}*/
 
 public Action:Timer_NoHonorBound(Handle:timer, any:userid)
 {
