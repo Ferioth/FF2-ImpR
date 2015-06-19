@@ -3756,7 +3756,7 @@ public Action:CheckItems(Handle:timer, any:userid)
 		index=GetEntProp(weapon, Prop_Send, "m_iItemDefinitionIndex");
 		switch(index)
 		{
-			case 17, 36, 204, 412:  //Syringe Gun, Blutsauger, Strange Syringe Gun, Overdose
+			/*case 17, 36, 204, 412:  //Syringe Gun, Blutsauger, Strange Syringe Gun, Overdose
 			{
 				if(GetEntProp(weapon, Prop_Send, "m_iEntityQuality")!=10)
 				{
@@ -3782,7 +3782,7 @@ public Action:CheckItems(Handle:timer, any:userid)
 			{
 				TF2_RemoveWeaponSlot(client, TFWeaponSlot_Primary);
 				SpawnWeapon(client, "tf_weapon_sniperrifle", 14, 1, 0, "");
-			}
+			}*/
 		}
 	}
 	else
@@ -3796,12 +3796,12 @@ public Action:CheckItems(Handle:timer, any:userid)
 		index=GetEntProp(weapon, Prop_Send, "m_iItemDefinitionIndex");
 		switch(index)
 		{
-			case 265:  //Stickybomb Jumper
+			/*case 265:  //Stickybomb Jumper
 			{
 				TF2_RemoveWeaponSlot(client, TFWeaponSlot_Secondary);
 				weapon=SpawnWeapon(client, "tf_weapon_pipebomblauncher", 20, 1, 0, "");
 				FF2_SetAmmo(client, weapon, 24);
-			}
+			}*/
 		}
 
 		if(TF2_GetPlayerClass(client)==TFClass_Medic && GetEntProp(weapon, Prop_Send, "m_iEntityQuality")!=10)  //10 means the weapon is customized, so we don't want to touch those
@@ -3814,13 +3814,13 @@ public Action:CheckItems(Handle:timer, any:userid)
 				}
 				default:
 				{
-					TF2_RemoveWeaponSlot(client, TFWeaponSlot_Secondary);
+					/*TF2_RemoveWeaponSlot(client, TFWeaponSlot_Secondary);
 					weapon=SpawnWeapon(client, "tf_weapon_medigun", 29, 5, 10, "10 ; 1.25 ; 178 ; 0.75 ; 144 ; 2.0 ; 11 ; 1.5");
 						//Switch to regular medigun
 						//10: +25% faster charge rate
 						//178: +25% faster weapon switch
 						//144: Quick-fix speed/jump effects
-						//11: +50% overheal bonus
+						//11: +50% overheal bonus*/
 				}
 			}
 			SetEntPropFloat(weapon, Prop_Send, "m_flChargeLevel", 0.40);
@@ -3837,24 +3837,24 @@ public Action:CheckItems(Handle:timer, any:userid)
 		civilianCheck[client]++;
 	}
 
-	new playerBack=FindPlayerBack(client, 57);  //Razorback
+	/*new playerBack=FindPlayerBack(client, 57);  //Razorback
 	shield[client]=playerBack!=-1 ? playerBack : 0;
 	if(IsValidEntity(FindPlayerBack(client, 642)))  //Cozy Camper
 	{
 		weapon=SpawnWeapon(client, "tf_weapon_smg", 16, 1, 6, "149 ; 1.5 ; 15 ; 0.0 ; 1 ; 0.85");
-	}
+	}*/
 
 	#if defined _tf2attributes_included
 	if(tf2attributes)
 	{
-		if(IsValidEntity(FindPlayerBack(client, 444)))  //Mantreads
+		/*if(IsValidEntity(FindPlayerBack(client, 444)))  //Mantreads
 		{
 			TF2Attrib_SetByDefIndex(client, 58, 1.5);  //+50% increased push force
 		}
 		else
 		{
 			TF2Attrib_RemoveByDefIndex(client, 58);
-		}
+		}*/
 	}
 	#endif
 
@@ -3873,7 +3873,7 @@ public Action:CheckItems(Handle:timer, any:userid)
 		index=GetEntProp(weapon, Prop_Send, "m_iItemDefinitionIndex");
 		switch(index)
 		{
-			case 43:  //KGB
+			/*case 43:  //KGB
 			{
 				TF2_RemoveWeaponSlot(client, TFWeaponSlot_Melee);
 				weapon=SpawnWeapon(client, "tf_weapon_fists", 239, 1, 6, "1 ; 0.5 ; 107 ; 1.5 ; 128 ; 1 ; 191 ; -7");  //GRU
@@ -3881,19 +3881,19 @@ public Action:CheckItems(Handle:timer, any:userid)
 					//107: +50% move speed
 					//128: Only when weapon is active
 					//191: -7 health/second
-			}
+			}*/
 			case 357:  //Half-Zatoichi
 			{
 				CreateTimer(1.0, Timer_NoHonorBound, GetClientUserId(client), TIMER_FLAG_NO_MAPCHANGE);
 			}
-			case 589:  //Eureka Effect
+			/*case 589:  //Eureka Effect
 			{
 				if(!GetConVarBool(cvarEnableEurekaEffect))
 				{
 					TF2_RemoveWeaponSlot(client, TFWeaponSlot_Melee);
 					weapon=SpawnWeapon(client, "tf_weapon_wrench", 7, 1, 0, "");
 				}
-			}
+			}*/
 		}
 	}
 	else
@@ -3901,12 +3901,12 @@ public Action:CheckItems(Handle:timer, any:userid)
 		civilianCheck[client]++;
 	}
 
-	weapon=GetPlayerWeaponSlot(client, 4);
+	/*weapon=GetPlayerWeaponSlot(client, 4);
 	if(weapon && IsValidEntity(weapon) && GetEntProp(weapon, Prop_Send, "m_iItemDefinitionIndex")==60)  //Cloak and Dagger
 	{
 		TF2_RemoveWeaponSlot(client, 4);
 		weapon=SpawnWeapon(client, "tf_weapon_invis", 30, 1, 0, "");
-	}
+	}*/
 
 	if(civilianCheck[client]==3)
 	{
@@ -5753,20 +5753,20 @@ public Action:OnTakeDamage(client, &attacker, &inflictor, &Float:damage, &damage
 			if(TF2_IsPlayerInCondition(client, TFCond_DefenseBuffed))
 			{
 				ScaleVector(damageForce, 9.0);
-				damage*=0.3;
+				damage*=0.30;
 				return Plugin_Changed;
 			}
 
-			if(TF2_IsPlayerInCondition(client, TFCond_DefenseBuffMmmph))
+			/*if(TF2_IsPlayerInCondition(client, TFCond_DefenseBuffMmmph)) //Makes phlog rage useless unless used far enough to not be hit before finishing. I don't want that.
 			{
 				damage*=9;
 				TF2_AddCondition(client, TFCond_Bonked, 0.1);
 				return Plugin_Changed;
-			}
+			}*/
 
-			if(TF2_IsPlayerInCondition(client, TFCond_CritMmmph))
+			if(TF2_IsPlayerInCondition(client, TFCond_CritMmmph)) //Taunting should be the main damage blocker, if you have the ability to move you shouldn't have that much resistance.
 			{
-				damage*=0.25;
+				damage*=0.40; //Original = 0.25
 				return Plugin_Changed;
 			}
 
@@ -5792,7 +5792,10 @@ public Action:OnTakeDamage(client, &attacker, &inflictor, &Float:damage, &damage
 						{
 							damagetype&=~DMG_CRIT;
 						}
-						damage=620.0;
+						damage*=3.0;
+						//Default = 620.
+						//If you're not going to advice people to tweak 'tf_feign_death_damage_scale' then at the very least do NOT put in direct values instead of multipliers.
+						//Not using multipliers? Alright then, now people have to deal with DoT bosses dealing 620 damage per bleed tick.
 						return Plugin_Changed;
 					}
 
@@ -5802,7 +5805,9 @@ public Action:OnTakeDamage(client, &attacker, &inflictor, &Float:damage, &damage
 						{
 							damagetype&=~DMG_CRIT;
 						}
-						damage=850.0;
+						damage*=2.0;
+						//Default = 850.
+						//If the normal cloak now has the damage resistance too then why would you further increase damage against players who can't even cloak at will??
 						return Plugin_Changed;
 					}
 
@@ -5812,7 +5817,9 @@ public Action:OnTakeDamage(client, &attacker, &inflictor, &Float:damage, &damage
 						{
 							damagetype&=~DMG_CRIT;
 						}
-						damage=620.0;
+						damage*=3.0;
+						//Default = 620.
+						//Stop.
 						return Plugin_Changed;
 					}
 				}
@@ -5825,11 +5832,11 @@ public Action:OnTakeDamage(client, &attacker, &inflictor, &Float:damage, &damage
 				}
 			}
 
-			if(damage<=160.0)  //TODO: Wat
+			/*if(damage<=160.0)  //TODO: Wat //Hell no, if damage doesn't go over 160 there's a reason for that.
 			{
 				damage*=3;
 				return Plugin_Changed;
-			}
+			}*/
 		}
 	}
 	else
@@ -5969,13 +5976,13 @@ public Action:OnTakeDamage(client, &attacker, &inflictor, &Float:damage, &damage
 							return Plugin_Changed;
 						}
 					}
-					case 61, 1006:  //Ambassador, Festive Ambassador
+					/*case 61, 1006:  //Ambassador, Festive Ambassador
 					{
 						if(damagecustom==TF_CUSTOM_HEADSHOT)
 						{
-							damage=85.0;  //Final damage 255
+							damage=85.0;  //Final damage 255 //For the love of god just use 390 (Headshot damage increase) instead.
 						}
-					}
+					}*/
 					case 132, 266, 482, 1082:  //Eyelander, HHHH, Nessie's Nine Iron, Festive Eyelander
 					{
 						IncrementHeadCount(attacker);
@@ -6064,7 +6071,7 @@ public Action:OnTakeDamage(client, &attacker, &inflictor, &Float:damage, &damage
 					{
 						if(GetEntProp(attacker, Prop_Send, "m_iRevengeCrits"))  //If a revenge crit was used, give a damage bonus
 						{
-							damage=85.0;  //255 final damage
+							damage*=2.0;  //255 final damage //Default = 85.0. Do not override, multiply instead.
 						}
 					}
 					case 528:  //Short Circuit
@@ -6121,7 +6128,7 @@ public Action:OnTakeDamage(client, &attacker, &inflictor, &Float:damage, &damage
 					{
 						if(!TF2_IsPlayerInCondition(attacker, TFCond_CritMmmph))
 						{
-							damage/=2.0;
+							damage/=1.5; //Default = 2.0. Baller.
 						}
 					}
 					case 1099:  //Tide Turner
@@ -6194,9 +6201,9 @@ public Action:OnTakeDamage(client, &attacker, &inflictor, &Float:damage, &damage
 					else if(index==356)  //Conniver's Kunai
 					{
 						new health=GetClientHealth(attacker)+200;
-						if(health>500)
+						if(health>1000) //Default = 500.
 						{
-							health=500;
+							health+=500; //Used to be set value, made it additive.
 						}
 						SetEntProp(attacker, Prop_Data, "m_iHealth", health);
 						SetEntProp(attacker, Prop_Send, "m_iHealth", health);
@@ -6241,10 +6248,10 @@ public Action:OnTakeDamage(client, &attacker, &inflictor, &Float:damage, &damage
 					{
 						if(action==Plugin_Changed)
 						{
-							damage=damage2;
+							damage=damage2; //Ferioth: I'm assuming this doubles world damage for the boss since he has copious amounts of health?
 						}
 
-						if(damage>1500.0)
+						if(damage>1500.0) //Ferioth: Safety to prevent boss from taking more than a certain amount of damage via world damage?
 						{
 							damage=1500.0;
 						}
