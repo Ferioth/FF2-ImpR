@@ -1,4 +1,4 @@
-## FF2 Mechanics Tweaking Fork
+## FF2 -ImpR- Balance Fork
 
 This is a fork for FF2 balance and tweak changes to make playing as the boss a lot more challenging, and to remove unwanted mechanics.
 
